@@ -34,7 +34,9 @@ class ProjectsTest extends DuskTestCase
                     ->assertSeeIn('#project_manager', 'Nancy')
                     ->assertSeeIn('#product_owner', 'John')
                     ->assertSeeIn('#urls', 'https://someproject.test')
-                    ->assertSeeIn('#source_code', 'https://github.com/foo/bar');
+                    ->assertSeeIn('#source_code', 'https://github.com/foo/bar')
+                    ->clickLink('Edit project')
+                    ->assertPathBeginsWith('/projects');
         });
     }
 }

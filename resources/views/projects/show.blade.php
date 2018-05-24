@@ -31,8 +31,7 @@
     </div>
 
     <div class="text-right mt-3">
-        <button type="button" class="btn btn-danger">Delete project</button>
-        <button type="button" class="btn btn-primary">Edit project</button>
+        <a class="btn btn-primary" href="{{ route('project.edit', $project) }}" role="button" >Edit project</a>
     </div>
 
 @endsection
