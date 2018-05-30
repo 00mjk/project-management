@@ -17,3 +17,4 @@ Route::post('/projects/store', 'ProjectController@store')->name('project.store')
 Route::get('/projects/{project}', 'ProjectController@show')->name('project.show');
 Route::get('/projects/{project}/edit', 'ProjectController@edit')->name('project.edit');
 Route::put('/projects/{project}', 'ProjectController@update')->name('project.update');
+Route::delete('/projects/{project}', 'ProjectController@destroy')->name('project.destroy');

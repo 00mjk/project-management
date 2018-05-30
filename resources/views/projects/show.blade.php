@@ -15,7 +15,7 @@
             <li class="list-group-item" id="client_name">Client: {{ $project->client_name }}</li>
             <li class="list-group-item" id="project_manager">Project manager: {{ $project->project_manager }}</li>
             <li class="list-group-item" id="product_owner">Product owner: {{ $project->product_owner }}</li>
-            <li class="list-group-item" id=technical_leader"">Technical leader: {{ $project->technical_leader  }}</li>
+            <li class="list-group-item" id=technical_leader>Technical leader: {{ $project->technical_leader  }}</li>
             <li class="list-group-item" id="urls">
                 URLs:
                 <ul>
@@ -33,5 +33,9 @@
     <div class="text-right mt-3">
         <a class="btn btn-primary" href="{{ route('project.edit', $project) }}" role="button" >Edit project</a>
     </div>
+
+    {{ Form::open(['route' => ['project.destroy', $project], 'method' => 'delete']) }}
+        <button class="btn btn-danger" id="delete" type="submit">Delete</button>
+    {{ Form::close() }}
 
 @endsection

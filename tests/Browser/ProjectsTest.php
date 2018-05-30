@@ -56,7 +56,9 @@ class ProjectsTest extends DuskTestCase
                     ->assertSeeIn('#product_owner', 'Jonathan')
                     ->assertSeeIn('#technical_leader', 'David')
                     ->assertSeeIn('#urls', 'https://somecorp.test')
-                    ->assertSeeIn('#source_code', 'https://github.com/some/corp');
+                    ->assertSeeIn('#source_code', 'https://github.com/some/corp')
+                    ->click('#delete')
+                    ->assertSee('Project successfully deleted!');
         });
     }
 }
