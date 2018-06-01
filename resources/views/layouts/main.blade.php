@@ -17,6 +17,13 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ route('project.create') }}">Create new project</a>
           </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Persons</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="{{ route('person.index') }}">View persons list</a>
+              <a class="dropdown-item" href="{{ route('person.create') }}">Create new person</a>
+            </div>
+          </li>
         </ul>
     </nav>
 
