@@ -14,6 +14,13 @@ class PersonController extends Controller
         return view('persons.index', compact('persons'));
     }
 
+    public function trashed()
+    {
+        $persons = Person::withTrashed()->get();
+
+        return view('persons.trashed', compact('persons'));
+    }
+
     public function create()
     {
         return view('persons.create');
@@ -49,7 +56,7 @@ class PersonController extends Controller
     {
         $person->delete();
 
-        return redirect()->route('project.index')
+        return redirect()->route('person.index')
                          ->with('success', 'Person successfully deleted!');
     }
 }

@@ -9,9 +9,7 @@
         </div>
     @endif
 
-    <h1 class="mb-3">Persons</h1>
-
-    <p><a href="{{ route('person.trashed') }}" role="button" class="btn btn-primary">View deleted persons</a></p>
+    <h1 class="mb-3">Deleted persons</h1>
 
     <table id="persons" class="table">
         <thead>
@@ -19,6 +17,7 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Created</th>
+                <th>Deleted</th>
             </tr>
         </thead>
         <tbody>
@@ -27,6 +26,7 @@
                     <td>{{ $person->id }}</td>
                     <td><a href="{{ route('person.show', $person) }}">{{ $person->name }}</a></td>
                     <td>{{ $person->created_at }}</td>
+                    <td>{{ $person->deleted_at }}</td>
                 </tr>
             @endforeach
         </tbody>

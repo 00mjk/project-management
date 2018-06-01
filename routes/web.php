@@ -20,6 +20,7 @@ Route::put('/projects/{project}', 'ProjectController@update')->name('project.upd
 Route::delete('/projects/{project}', 'ProjectController@destroy')->name('project.destroy');
 
 Route::get('/persons', 'PersonController@index')->name('person.index');
+Route::get('/persons/trashed', 'PersonController@trashed')->name('person.trashed');
 Route::get('/persons/create', 'PersonController@create')->name('person.create');
 Route::post('/persons/store', 'PersonController@store')->name('person.store');
 Route::get('/persons/{person}', 'PersonController@show')->name('person.show');
