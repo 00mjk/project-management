@@ -16,7 +16,7 @@ class PersonController extends Controller
 
     public function trashed()
     {
-        $persons = Person::withTrashed()->get();
+        $persons = Person::onlyTrashed()->get();
 
         return view('persons.trashed', compact('persons'));
     }
@@ -58,5 +58,13 @@ class PersonController extends Controller
 
         return redirect()->route('person.index')
                          ->with('success', 'Person successfully deleted!');
+    }
+
+    public function restore(Person $person)
+    {
+        $person->restore();
+
+        return redirect()->route('person.index')
+                         ->with('success', 'Person successfully restored!');
     }
 }

@@ -16,8 +16,14 @@
         <a class="btn btn-primary" href="{{ route('person.edit', $person) }}" role="button" >Edit person</a>
     </div>
 
-    {{ Form::open(['route' => ['person.destroy', $person], 'method' => 'delete']) }}
-        <button class="btn btn-danger" id="delete" type="submit">Delete</button>
-    {{ Form::close() }}
+    @if(!$person->trashed())
+        {{ Form::open(['route' => ['person.destroy', $person], 'method' => 'delete']) }}
+            <button class="btn btn-danger" id="delete" type="submit">Delete</button>
+        {{ Form::close() }}
+    @else
+        {{ Form::open(['route' => ['person.restore', $person], 'method' => 'put']) }}
+            <button class="btn btn-success" id="restore" type="submit">Restore</button>
+        {{ Form::close() }}
+    @endif
 
 @endsection
