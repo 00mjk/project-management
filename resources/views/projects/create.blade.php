@@ -1,10 +1,10 @@
 @extends('layouts.main')
 
-@section('title', 'Create a new project')
+@section('title', 'Create new project')
 
 @section('content')
 
-    <h1>Create a new project</h1>
+    <h1>Create new project</h1>
 
     {{ Form::open(['route' => 'project.store']) }}
 
