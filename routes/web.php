@@ -27,4 +27,5 @@ Route::get('/persons/{editable_person}', 'PersonController@show')->name('person.
 Route::get('/persons/{editable_person}/edit', 'PersonController@edit')->name('person.edit');
 Route::put('/persons/{editable_person}', 'PersonController@update')->name('person.update');
 Route::delete('/persons/{editable_person}', 'PersonController@destroy')->name('person.destroy');
+Route::delete('/persons/{editable_person}/force_delete', 'PersonController@forceDelete')->name('person.force_delete');
 Route::put('/persons/{editable_person}/restore', 'PersonController@restore')->name('person.restore');

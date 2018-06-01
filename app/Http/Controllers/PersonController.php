@@ -60,6 +60,14 @@ class PersonController extends Controller
                          ->with('success', 'Person successfully deleted!');
     }
 
+    public function forceDelete(Person $person)
+    {
+        $person->forceDelete();
+
+        return redirect()->route('person.index')
+                         ->with('success', 'Person permanently deleted!');
+    }
+
     public function restore(Person $person)
     {
         $person->restore();

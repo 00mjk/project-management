@@ -24,6 +24,10 @@
         {{ Form::open(['route' => ['person.restore', $person], 'method' => 'put']) }}
             <button class="btn btn-success" id="restore" type="submit">Restore</button>
         {{ Form::close() }}
+
+        {{ Form::open(['route' => ['person.force_delete', $person], 'method' => 'delete', 'class' => 'mt-3']) }}
+            <button class="btn btn-danger" id="foce_delete" type="submit">Delete permanently </button>
+        {{ Form::close() }}
     @endif
 
 @endsection
