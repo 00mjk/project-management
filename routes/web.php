@@ -19,13 +19,13 @@ Route::get('/projects/{project}/edit', 'ProjectController@edit')->name('project.
 Route::put('/projects/{project}', 'ProjectController@update')->name('project.update');
 Route::delete('/projects/{project}', 'ProjectController@destroy')->name('project.destroy');
 
-Route::get('/persons', 'PersonController@index')->name('person.index');
-Route::get('/persons/trashed', 'PersonController@trashed')->name('person.trashed');
-Route::get('/persons/create', 'PersonController@create')->name('person.create');
-Route::post('/persons/store', 'PersonController@store')->name('person.store');
-Route::get('/persons/{editable_person}', 'PersonController@show')->name('person.show');
-Route::get('/persons/{editable_person}/edit', 'PersonController@edit')->name('person.edit');
-Route::put('/persons/{editable_person}', 'PersonController@update')->name('person.update');
-Route::delete('/persons/{editable_person}', 'PersonController@destroy')->name('person.destroy');
-Route::delete('/persons/{editable_person}/force_delete', 'PersonController@forceDelete')->name('person.force_delete');
-Route::put('/persons/{editable_person}/restore', 'PersonController@restore')->name('person.restore');
+Route::get('/people', 'PersonController@index')->name('person.index');
+Route::get('/people/trashed', 'PersonController@trashed')->name('person.trashed');
+Route::get('/people/create', 'PersonController@create')->name('person.create');
+Route::post('/people/store', 'PersonController@store')->name('person.store');
+Route::get('/people/{editable_person}', 'PersonController@show')->name('person.show');
+Route::get('/people/{editable_person}/edit', 'PersonController@edit')->name('person.edit');
+Route::put('/people/{editable_person}', 'PersonController@update')->name('person.update');
+Route::delete('/people/{editable_person}', 'PersonController@destroy')->name('person.destroy');
+Route::delete('/people/{editable_person}/force_delete', 'PersonController@forceDelete')->name('person.force_delete');
+Route::put('/people/{editable_person}/restore', 'PersonController@restore')->name('person.restore');

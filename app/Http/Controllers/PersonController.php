@@ -9,21 +9,21 @@ class PersonController extends Controller
 {
     public function index()
     {
-        $persons = Person::all();
+        $people = Person::all();
 
-        return view('persons.index', compact('persons'));
+        return view('people.index', compact('people'));
     }
 
     public function trashed()
     {
-        $persons = Person::onlyTrashed()->get();
+        $people = Person::onlyTrashed()->get();
 
-        return view('persons.trashed', compact('persons'));
+        return view('people.trashed', compact('people'));
     }
 
     public function create()
     {
-        return view('persons.create');
+        return view('people.create');
     }
 
     public function store(Request $request)
@@ -36,12 +36,12 @@ class PersonController extends Controller
 
     public function show(Person $person)
     {
-        return view('persons.show', compact('person'));
+        return view('people.show', compact('person'));
     }
 
     public function edit(Person $person)
     {
-        return view('persons.edit', compact('person'));
+        return view('people.edit', compact('person'));
     }
 
     public function update(Request $request, Person $person)

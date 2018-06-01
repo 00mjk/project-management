@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Persons list')
+@section('title', 'People list')
 
 @section('content')
     @if (session('success'))
@@ -9,11 +9,11 @@
         </div>
     @endif
 
-    <h1 class="mb-3">Persons</h1>
+    <h1 class="mb-3">People</h1>
 
-    <p><a href="{{ route('person.trashed') }}" role="button" class="btn btn-primary">View deleted persons</a></p>
+    <p><a href="{{ route('person.trashed') }}" role="button" class="btn btn-primary">View deleted people</a></p>
 
-    <table id="persons" class="table">
+    <table id="people" class="table">
         <thead>
             <tr>
                 <th>ID</th>
@@ -22,7 +22,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($persons as $person)
+            @foreach($people as $person)
                 <tr class="@if($person->deleted_at) table-danger @endif">
                     <td>{{ $person->id }}</td>
                     <td><a href="{{ route('person.show', $person) }}">{{ $person->name }}</a></td>
@@ -40,7 +40,7 @@
 
     <script>
         $(document).ready( function () {
-            $('#persons').DataTable({
+            $('#people').DataTable({
                 "order": [[ 0, "desc" ]]
             });
         } );
