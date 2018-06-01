@@ -22,9 +22,6 @@
             <div class="dropdown-menu">
               <a class="dropdown-item" href="{{ route('person.index') }}">View people list</a>
               <a class="dropdown-item" href="{{ route('person.create') }}">Create new person</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">View roles list</a>
-              <a class="dropdown-item" href="#">Create a new role</a>
             </div>
           </li>
         </ul>
