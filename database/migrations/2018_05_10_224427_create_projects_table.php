@@ -17,10 +17,10 @@ class CreateProjectsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->text('description')->nullable();
-            $table->text('client_name')->nullable();
-            $table->text('project_manager')->nullable();
-            $table->text('product_owner')->nullable();
-            $table->text('technical_leader')->nullable();
+            $table->integer('client_id')->nullable();
+            $table->integer('project_manager_id')->nullable();
+            $table->integer('product_owner_id')->nullable();
+            $table->integer('technical_leader_id')->nullable();
             $table->text('urls')->nullable();
             $table->text('source_code')->nullable();
             $table->timestamps();

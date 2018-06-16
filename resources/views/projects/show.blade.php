@@ -12,10 +12,10 @@
 
     <div class="card">
         <ul class="list-group list-group-flush">
-            <li class="list-group-item" id="client_name">Client: {{ $project->client_name }}</li>
-            <li class="list-group-item" id="project_manager">Project manager: {{ $project->project_manager }}</li>
-            <li class="list-group-item" id="product_owner">Product owner: {{ $project->product_owner }}</li>
-            <li class="list-group-item" id=technical_leader>Technical leader: {{ $project->technical_leader  }}</li>
+            <li class="list-group-item" id="client_name">Client: {{ $project->client->name }}</li>
+            <li class="list-group-item" id="project_manager">Project manager: {{ $project->manager->name }}</li>
+            <li class="list-group-item" id="product_owner">Product owner: {{ $project->product_owner->name }}</li>
+            <li class="list-group-item" id=technical_leader>Technical leader: {{ $project->technical_leader->name  }}</li>
             <li class="list-group-item" id="urls">
                 URLs:
                 <ul>

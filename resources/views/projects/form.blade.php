@@ -19,15 +19,27 @@
 <div class="row">
     <div class="col-md">
         <div class="form-group">
-            <label for="client_name">Client</label>
-            {{ Form::text('client_name', null, ['id' => 'client_name', 'class' => 'form-control']) }}
+            <label for="client_id">Client</label>
+            {{
+                Form::select('client_id', $people, null, [
+                    'id' => 'client_id',
+                    'class' => 'custom-select',
+                    'placeholder' => 'Select a client...'
+                ])
+            }}
         </div>
     </div>
 
     <div class="col-md">
         <div class="form-group">
-            <label for="project_manager">Project manager</label>
-            {{ Form::text('project_manager', null, ['id' => 'project_manager', 'class' => 'form-control']) }}
+            <label for="project_manager_id">Project manager</label>
+            {{
+                Form::select('project_manager_id', $people, null, [
+                    'id' => 'project_manager_id',
+                    'class' => 'custom-select',
+                    'placeholder' => 'Select a project manager...'
+                ])
+            }}
         </div>
     </div>
 </div>
@@ -35,15 +47,27 @@
 <div class="row">
     <div class="col-md">
         <div class="form-group">
-            <label for="product_owner">Product owner</label>
-            {{ Form::text('product_owner', null, ['id' => 'product_owner', 'class' => 'form-control']) }}
+            <label for="product_owner_id">Product owner</label>
+            {{
+                Form::select('product_owner_id', $people, null, [
+                    'id' => 'product_owner_id',
+                    'class' => 'custom-select',
+                    'placeholder' => 'Select a product owner...'
+                ])
+            }}
         </div>
     </div>
 
     <div class="col-md">
         <div class="form-group">
-            <label for="technical_leader">Technical leader</label>
-            {{ Form::text('technical_leader', null, ['id' => 'technical_leader', 'class' => 'form-control']) }}
+            <label for="technical_leader_id">Technical leader</label>
+            {{
+                Form::select('technical_leader_id', $people, null, [
+                    'id' => 'technical_leader_id',
+                    'class' => 'custom-select',
+                    'placeholder' => 'Select a technical leader...'
+                ])
+            }}
         </div>
     </div>
 </div>

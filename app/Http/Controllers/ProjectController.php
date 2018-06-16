@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Person;
 use App\Project;
 use Illuminate\Http\Request;
 
@@ -11,12 +12,16 @@ class ProjectController extends Controller
     {
         $projects = Project::all();
 
+        $projects->first()->pro_manager;
+
         return view('projects.index', compact('projects'));
     }
 
     public function create()
     {
-        return view('projects.create');
+        $people = Person::all()->pluck('name', 'id');
+
+        return view('projects.create', compact('people'));
     }
 
     public function store(Request $request)
@@ -24,10 +29,10 @@ class ProjectController extends Controller
         Project::create($request->only([
             'name',
             'description',
-            'client_name',
-            'project_manager',
-            'product_owner',
-            'technical_leader',
+            'client_id',
+            'project_manager_id',
+            'product_owner_id',
+            'technical_leader_id',
             'urls',
             'source_code'
         ]));
@@ -43,7 +48,9 @@ class ProjectController extends Controller
 
     public function edit(Project $project)
     {
-        return view('projects.edit', compact('project'));
+        $people = Person::all()->pluck('name', 'id');
+
+        return view('projects.edit', compact('project', 'people'));
     }
 
     public function update(Request $request, Project $project)
@@ -51,10 +58,10 @@ class ProjectController extends Controller
         $project->update($request->only([
             'name',
             'description',
-            'client_name',
-            'project_manager',
-            'product_owner',
-            'technical_leader',
+            'client_id',
+            'project_manager_id',
+            'product_owner_id',
+            'technical_leader_id',
             'urls',
             'source_code'
         ]));
