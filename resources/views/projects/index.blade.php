@@ -28,10 +28,10 @@
                 <tr class="@if($project->deleted_at) table-danger @endif">
                     <td>{{ $project->id }}</td>
                     <td><a href="{{ route('project.show', $project) }}">{{ $project->name }}</a></td>
-                    <td>{{ $project->client->name }}</td>
-                    <td>{{ $project->manager->name }}</td>
-                    <td>{{ $project->product_owner->name }}</td>
-                    <td>{{ $project->technical_leader->name }}</td>
+                    <td>{{ optional($project->client)->name }}</td>
+                    <td>{{ optional($project->manager)->name }}</td>
+                    <td>{{ optional($project->product_owner)->name }}</td>
+                    <td>{{ optional($project->technical_leader)->name }}</td>
                     <td>{{ $project->created_at }}</td>
                 </tr>
             @endforeach
