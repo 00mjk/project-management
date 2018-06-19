@@ -12,17 +12,12 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="{{ route('project.index') }}">Projects</a>
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('project.create') }}">Create new project</a>
+            <a class="nav-link" href="{{ route('project.index') }}">Projects</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">People</a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="{{ route('person.index') }}">View people list</a>
-              <a class="dropdown-item" href="{{ route('person.create') }}">Create new person</a>
-            </div>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('person.index') }}">People</a>
           </li>
         </ul>
     </nav>
