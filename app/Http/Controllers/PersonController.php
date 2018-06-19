@@ -28,7 +28,10 @@ class PersonController extends Controller
 
     public function store(Request $request)
     {
-        Person::create($request->only(['name']));
+        Person::create($request->only([
+            'name',
+            'email'
+        ]));
 
         return redirect()->route('person.index')
                          ->with('success', 'Person successfully created!');
@@ -46,7 +49,10 @@ class PersonController extends Controller
 
     public function update(Request $request, Person $person)
     {
-        $person->update($request->only(['name']));
+        $person->update($request->only([
+            'name',
+            'email'
+        ]));
 
         return redirect()->route('person.index')
                  ->with('success', 'Person successfully updated!');

@@ -13,6 +13,11 @@
             {{ Form::text('name', null, ['id' => 'name', 'class' => 'form-control']) }}
         </div>
 
+        <div class="form-group">
+            <label for="email">E-mail address</label>
+            {{ Form::text('email', null, ['id' => 'email', 'class' => 'form-control']) }}
+        </div>
+
         <p class="text-right"><button type="submit" id="create" class="btn btn-primary">Create new person</button></p>
 
     {{ Form::close() }}

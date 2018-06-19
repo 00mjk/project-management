@@ -11,6 +11,7 @@
     <div class="card">
         <ul class="list-group list-group-flush">
             <li class="list-group-item" id="name">Name: {{ $person->name }}</li>
+            <li class="list-group-item" id="email">E-mail address: {{ $person->email }}</li>
         </ul>
     </div>
 
