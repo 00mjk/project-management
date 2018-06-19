@@ -12,8 +12,6 @@ class ProjectController extends Controller
     {
         $projects = Project::all();
 
-        $projects->first()->pro_manager;
-
         return view('projects.index', compact('projects'));
     }
 
