@@ -8,16 +8,18 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" />
+
     <title>@yield('title') - Projects manager</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('project.index') }}">Projects</a>
+            <a class="nav-link" href="{{ route('project.index') }}"><span class="oi oi-project"></span> Projects</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('person.index') }}">People</a>
+            <a class="nav-link" href="{{ route('person.index') }}"><span class="oi oi-people"></span> People</a>
           </li>
         </ul>
     </nav>

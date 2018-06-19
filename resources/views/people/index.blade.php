@@ -11,7 +11,7 @@
 
     <h1 class="mb-3">People</h1>
 
-    <p><a href="{{ route('person.trashed') }}" role="button" class="btn btn-info">View deleted</a> <a href="{{ route('person.create') }}" role="button" class="btn btn-primary">Create new person</a></p>
+    <p><a href="{{ route('person.trashed') }}" role="button" class="btn btn-info"><span class="oi oi-trash"></span> View deleted</a> <a href="{{ route('person.create') }}" role="button" class="btn btn-primary"><span class="oi oi-plus"></span> Create new person</a></p>
 
     <table id="people" class="table">
         <thead>
