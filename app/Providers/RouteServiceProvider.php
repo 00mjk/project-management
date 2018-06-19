@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Person;
+use App\Project;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,10 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::bind('editable_person', function ($id) {
             return Person::withTrashed()->findOrFail($id);
+        });
+
+        Route::bind('editable_project', function ($id) {
+            return Project::withTrashed()->findOrFail($id);
         });
 
         parent::boot();

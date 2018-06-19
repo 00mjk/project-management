@@ -82,4 +82,20 @@ class ProjectController extends Controller
         return redirect()->route('project.index')
                          ->with('success', 'Project successfully deleted!');
     }
+
+    public function forceDelete(Project $project)
+    {
+        $project->forceDelete();
+
+        return redirect()->route('project.index')
+                         ->with('success', 'Project permanently deleted!');
+    }
+
+    public function restore(Project $project)
+    {
+        $project->restore();
+
+        return redirect()->route('project.index')
+                         ->with('success', 'Project successfully restored!');
+    }
 }

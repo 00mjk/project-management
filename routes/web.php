@@ -15,10 +15,12 @@ Route::get('/projects', 'ProjectController@index')->name('project.index');
 Route::get('/projects/trashed', 'ProjectController@trashed')->name('project.trashed');
 Route::get('/projects/create', 'ProjectController@create')->name('project.create');
 Route::post('/projects/store', 'ProjectController@store')->name('project.store');
-Route::get('/projects/{project}', 'ProjectController@show')->name('project.show');
-Route::get('/projects/{project}/edit', 'ProjectController@edit')->name('project.edit');
-Route::put('/projects/{project}', 'ProjectController@update')->name('project.update');
-Route::delete('/projects/{project}', 'ProjectController@destroy')->name('project.destroy');
+Route::get('/projects/{editable_project}', 'ProjectController@show')->name('project.show');
+Route::get('/projects/{editable_project}/edit', 'ProjectController@edit')->name('project.edit');
+Route::put('/projects/{editable_project}', 'ProjectController@update')->name('project.update');
+Route::delete('/projects/{editable_project}', 'ProjectController@destroy')->name('project.destroy');
+Route::delete('/projects/{editable_project}/force_delete', 'ProjectController@forceDelete')->name('project.force_delete');
+Route::put('/projects/{editable_project}/restore', 'ProjectController@restore')->name('project.restore');
 
 Route::get('/people', 'PersonController@index')->name('person.index');
 Route::get('/people/trashed', 'PersonController@trashed')->name('person.trashed');

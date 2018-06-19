@@ -36,8 +36,18 @@
         <a class="btn btn-primary" href="{{ route('project.edit', $project) }}" role="button" >Edit project</a>
     </div>
 
-    {{ Form::open(['route' => ['project.destroy', $project], 'method' => 'delete']) }}
-        <button class="btn btn-danger" id="delete" type="submit">Delete</button>
-    {{ Form::close() }}
+    @if(!$project->trashed())
+        {{ Form::open(['route' => ['project.destroy', $project], 'method' => 'delete']) }}
+            <button class="btn btn-danger" id="delete" type="submit">Delete</button>
+        {{ Form::close() }}
+    @else
+        {{ Form::open(['route' => ['project.restore', $project], 'method' => 'put']) }}
+            <button class="btn btn-success" id="restore" type="submit">Restore</button>
+        {{ Form::close() }}
+
+        {{ Form::open(['route' => ['project.force_delete', $project], 'method' => 'delete', 'class' => 'mt-3']) }}
+            <button class="btn btn-danger" id="foce_delete" type="submit">Delete permanently </button>
+        {{ Form::close() }}
+    @endif
 
 @endsection
