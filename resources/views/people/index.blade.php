@@ -23,7 +23,7 @@
         </thead>
         <tbody>
             @foreach($people as $person)
-                <tr class="@if($person->deleted_at) table-danger @endif">
+                <tr>
                     <td>{{ $person->id }}</td>
                     <td><a href="{{ route('person.show', $person) }}">{{ $person->name }}</a></td>
                     <td>{{ $person->created_at }}</td>
