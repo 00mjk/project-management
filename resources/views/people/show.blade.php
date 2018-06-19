@@ -4,7 +4,9 @@
 
 @section('content')
 
-    <h1 id="name">{{ $person->name }}</h1>
+    <h1 id="name">{{ $person->name }} <small class="text-muted">ID #{{ $person->id }}</small></h1>
+
+    <p>Created <span title="{{ $person->created_at }}">{{ $person->created_at->diffForHumans() }}</span>. Last update <span title="{{ $person->updated_at }}">{{ $person->updated_at->diffForHumans() }}</span>.</p>
 
     <div class="card">
         <ul class="list-group list-group-flush">

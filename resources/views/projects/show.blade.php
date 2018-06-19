@@ -4,7 +4,9 @@
 
 @section('content')
 
-    <h1 id="name">{{ $project->name }}</h1>
+    <h1 id="name">{{ $project->name }} <small class="text-muted">ID #{{ $project->id }}</small></h1>
+
+    <p>Created <span title="{{ $project->created_at }}">{{ $project->created_at->diffForHumans() }}</span>. Last update <span title="{{ $project->updated_at }}">{{ $project->updated_at->diffForHumans() }}</span>.</p>
 
     @if($project->description)
         <p id="description">{{ $project->description }}</p>
