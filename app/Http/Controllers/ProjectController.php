@@ -15,6 +15,13 @@ class ProjectController extends Controller
         return view('projects.index', compact('projects'));
     }
 
+    public function trashed()
+    {
+        $projects = Project::onlyTrashed()->get();
+
+        return view('projects.trashed', compact('projects'));
+    }
+
     public function create()
     {
         $people = Person::all()->pluck('name', 'id');

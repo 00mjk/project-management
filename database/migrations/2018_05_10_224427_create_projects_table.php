@@ -23,6 +23,7 @@ class CreateProjectsTable extends Migration
             $table->integer('technical_leader_id')->nullable();
             $table->text('urls')->nullable();
             $table->text('source_code')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

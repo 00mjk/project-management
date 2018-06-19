@@ -9,9 +9,7 @@
         </div>
     @endif
 
-    <h1 class="mb-3">Projects</h1>
-
-    <p><a href="{{ route('project.trashed') }}" role="button" class="btn btn-info">View deleted</a> <a href="{{ route('project.create') }}" role="button" class="btn btn-primary">Create new project</a></p>
+    <h1 class="mb-3">Deleted projects</h1>
 
     <table id="projects" class="table">
         <thead>
