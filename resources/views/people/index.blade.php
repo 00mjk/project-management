@@ -18,6 +18,7 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
+                <th>E-mail address</th>
                 <th>Created</th>
             </tr>
         </thead>
@@ -26,6 +27,7 @@
                 <tr>
                     <td>{{ $person->id }}</td>
                     <td><a href="{{ route('person.show', $person) }}">{{ $person->name }}</a></td>
+                    <td><a href="mailto:{{$person->email}}">{{ $person->email }}</a></td>
                     <td>{{ $person->created_at }}</td>
                 </tr>
             @endforeach
