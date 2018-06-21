@@ -1,5 +1,5 @@
 # Project Management
-A very simple project management app. Is not a tasks management app, just a simple projects board.
+A very simple project management app. It's not a tasks management app, it's just a simple projects board.
 
 ## Installation
 
