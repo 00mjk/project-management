@@ -20,4 +20,11 @@ class Person extends Model
     {
         return $this->belongsToMany('App\Role');
     }
+
+    public function scopeHasRole($query, $role)
+    {
+        return $query->whereHas('roles', function($query) use($role) {
+            $query->where('slug', $role);
+        });
+    }
 }

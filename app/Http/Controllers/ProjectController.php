@@ -24,21 +24,13 @@ class ProjectController extends Controller
 
     public function create()
     {
-        $clients = Person::whereHas('roles', function($query) {
-            $query->where('slug', 'client');
-        })->pluck('name', 'id');
+        $clients = Person::hasRole('client')->pluck('name', 'id');
 
-        $project_managers = Person::whereHas('roles', function($query) {
-            $query->where('slug', 'project-manager');
-        })->pluck('name', 'id');
+        $project_managers = Person::hasRole('project-manager')->pluck('name', 'id');
 
-        $product_owners = Person::whereHas('roles', function($query) {
-            $query->where('slug', 'product-owner');
-        })->pluck('name', 'id');
+        $product_owners = Person::hasRole('product-owner')->pluck('name', 'id');
 
-        $technical_leaders = Person::whereHas('roles', function($query) {
-            $query->where('slug', 'technical-leader');
-        })->pluck('name', 'id');
+        $technical_leaders = Person::hasRole('technical-leader')->pluck('name', 'id');
 
         return view('projects.create', compact('clients', 'project_managers', 'product_owners', 'technical_leaders'));
     }
@@ -67,9 +59,15 @@ class ProjectController extends Controller
 
     public function edit(Project $project)
     {
-        $people = Person::all()->pluck('name', 'id');
+        $clients = Person::hasRole('client')->pluck('name', 'id');
 
-        return view('projects.edit', compact('project', 'people'));
+        $project_managers = Person::hasRole('project-manager')->pluck('name', 'id');
+
+        $product_owners = Person::hasRole('product-owner')->pluck('name', 'id');
+
+        $technical_leaders = Person::hasRole('technical-leader')->pluck('name', 'id');
+
+        return view('projects.edit', compact('project', 'clients', 'project_managers', 'product_owners', 'technical_leaders'));
     }
 
     public function update(Request $request, Project $project)
