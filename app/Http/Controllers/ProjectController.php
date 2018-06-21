@@ -24,9 +24,23 @@ class ProjectController extends Controller
 
     public function create()
     {
-        $people = Person::all()->pluck('name', 'id');
+        $clients = Person::whereHas('roles', function($query) {
+            $query->where('slug', 'client');
+        })->pluck('name', 'id');
 
-        return view('projects.create', compact('people'));
+        $project_managers = Person::whereHas('roles', function($query) {
+            $query->where('slug', 'project-manager');
+        })->pluck('name', 'id');
+
+        $product_owners = Person::whereHas('roles', function($query) {
+            $query->where('slug', 'product-owner');
+        })->pluck('name', 'id');
+
+        $technical_leaders = Person::whereHas('roles', function($query) {
+            $query->where('slug', 'technical-leader');
+        })->pluck('name', 'id');
+
+        return view('projects.create', compact('clients', 'project_managers', 'product_owners', 'technical_leaders'));
     }
 
     public function store(Request $request)
