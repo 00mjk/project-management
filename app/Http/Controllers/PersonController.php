@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Person;
+use App\Role;
 use Illuminate\Http\Request;
 
 class PersonController extends Controller
@@ -23,15 +24,19 @@ class PersonController extends Controller
 
     public function create()
     {
-        return view('people.create');
+        $roles = Role::all();
+
+        return view('people.create', compact('roles'));
     }
 
     public function store(Request $request)
     {
-        Person::create($request->only([
+        $person = Person::create($request->only([
             'name',
             'email'
         ]));
+
+        $person->roles()->attach($request->roles);
 
         return redirect()->route('person.index')
                          ->with('success', 'Person successfully created!');
@@ -44,7 +49,9 @@ class PersonController extends Controller
 
     public function edit(Person $person)
     {
-        return view('people.edit', compact('person'));
+        $roles = Role::all();
+
+        return view('people.edit', compact('person', 'roles'));
     }
 
     public function update(Request $request, Person $person)
@@ -53,6 +60,8 @@ class PersonController extends Controller
             'name',
             'email'
         ]));
+
+        $person->roles()->sync($request->roles);
 
         return redirect()->route('person.index')
                  ->with('success', 'Person successfully updated!');

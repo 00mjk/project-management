@@ -15,4 +15,9 @@ class Person extends Model
     ];
 
     protected $dates = ['deleted_at'];
+
+    public function roles()
+    {
+        return $this->belongsToMany('App\Role');
+    }
 }
