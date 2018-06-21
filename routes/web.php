@@ -11,6 +11,8 @@
 |
 */
 
+Route::redirect('/', '/projects');
+
 Route::get('/projects', 'ProjectController@index')->name('project.index');
 Route::get('/projects/trashed', 'ProjectController@trashed')->name('project.trashed');
 Route::get('/projects/create', 'ProjectController@create')->name('project.create');
