@@ -21,7 +21,7 @@
         <div class="form-group">
             <label for="client_id">Client</label>
             {{
-                Form::select('client_id', $clients, null, [
+                Form::select('client_id', $people['client'], null, [
                     'id' => 'client_id',
                     'class' => 'custom-select',
                     'placeholder' => 'Select a client...'
@@ -34,7 +34,7 @@
         <div class="form-group">
             <label for="project_manager_id">Project manager</label>
             {{
-                Form::select('project_manager_id', $project_managers, null, [
+                Form::select('project_manager_id', $people['project-manager'], null, [
                     'id' => 'project_manager_id',
                     'class' => 'custom-select',
                     'placeholder' => 'Select a project manager...'
@@ -49,7 +49,7 @@
         <div class="form-group">
             <label for="product_owner_id">Product owner</label>
             {{
-                Form::select('product_owner_id', $product_owners, null, [
+                Form::select('product_owner_id', $people['product-owner'], null, [
                     'id' => 'product_owner_id',
                     'class' => 'custom-select',
                     'placeholder' => 'Select a product owner...'
@@ -62,7 +62,7 @@
         <div class="form-group">
             <label for="technical_leader_id">Technical leader</label>
             {{
-                Form::select('technical_leader_id', $technical_leaders, null, [
+                Form::select('technical_leader_id', $people['technical-leader'], null, [
                     'id' => 'technical_leader_id',
                     'class' => 'custom-select',
                     'placeholder' => 'Select a technical leader...'

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Person;
 use App\Project;
+use App\Role;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -24,15 +25,13 @@ class ProjectController extends Controller
 
     public function create()
     {
-        $clients = Person::hasRole('client')->pluck('name', 'id');
+        $roles = Role::get();
 
-        $project_managers = Person::hasRole('project-manager')->pluck('name', 'id');
+        $people = $roles->reduce(function ($people, $role) {
+            return $this->reduceRoles($people, $role);
+        });
 
-        $product_owners = Person::hasRole('product-owner')->pluck('name', 'id');
-
-        $technical_leaders = Person::hasRole('technical-leader')->pluck('name', 'id');
-
-        return view('projects.create', compact('clients', 'project_managers', 'product_owners', 'technical_leaders'));
+        return view('projects.create', compact('clients', 'people'));
     }
 
     public function store(Request $request)
@@ -59,15 +58,13 @@ class ProjectController extends Controller
 
     public function edit(Project $project)
     {
-        $clients = Person::hasRole('client')->pluck('name', 'id');
+        $roles = Role::with('people')->get();
 
-        $project_managers = Person::hasRole('project-manager')->pluck('name', 'id');
+        $people = $roles->reduce(function ($people, $role) {
+            return $this->reduceRoles($people, $role);
+        });
 
-        $product_owners = Person::hasRole('product-owner')->pluck('name', 'id');
-
-        $technical_leaders = Person::hasRole('technical-leader')->pluck('name', 'id');
-
-        return view('projects.edit', compact('project', 'clients', 'project_managers', 'product_owners', 'technical_leaders'));
+        return view('projects.edit', compact('project', 'people'));
     }
 
     public function update(Request $request, Project $project)
@@ -109,5 +106,12 @@ class ProjectController extends Controller
 
         return redirect()->route('project.index')
                          ->with('success', 'Project successfully restored!');
+    }
+
+    private function reduceRoles($roles, $role)
+    {
+        $roles[$role->slug] = $role->people->pluck('name', 'id');
+
+        return $roles;
     }
 }
