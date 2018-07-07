@@ -14,20 +14,33 @@
 
     <div class="card">
         <ul class="list-group list-group-flush">
-            <li class="list-group-item" id="client_name">Client: {{ optional($project->client)->name }}</li>
-            <li class="list-group-item" id="project_manager">Project manager: {{ optional($project->manager)->name }}</li>
-            <li class="list-group-item" id="product_owner">Product owner: {{ optional($project->product_owner)->name }}</li>
-            <li class="list-group-item" id=technical_leader>Technical leader: {{ optional($project->technical_leader)->name  }}</li>
+            @include('components.li', ['label' => 'Client', 'value' => optional($project->client)->name])
+            @include('components.li', ['label' => 'Project manager', 'value' => optional($project->manager)->name])
+            @include('components.li', ['label' => 'Product owner', 'value' => optional($project->product_owner)->name])
+            @include('components.li', ['label' => 'Technical leader', 'value' => optional($project->technical_leader)->name])
             <li class="list-group-item" id="urls">
                 URLs:
-                <ul>
-                    @foreach($project->urls_list as $url)
-                        <li><a href="{{ $url }}">{{ $url }}</a></li>
-                    @endforeach
-                </ul>
+                @if($project->urls)
+                    <ul>
+                        @foreach($project->urls_list as $url)
+                            <li><a href="{{ $url }}">{{ $url }}</a></li>
+                        @endforeach
+                    </ul>
+                @else
+                    <span class="text-muted">(empty)</span>
+                @endif
             </li>
             <li class="list-group-item" id="source_code">
-                Source code: {!! $project->source_code_link !!}
+                Source code:
+                @if($project->source_code_links)
+                    <ul>
+                        @foreach($project->source_code_links as $link)
+                            <li>{!! $link !!}</li>
+                        @endforeach
+                    </ul>
+                @else
+                    <span class="text-muted">(empty)</span>
+                @endif
             </li>
         </ul>
     </div>

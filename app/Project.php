@@ -40,17 +40,31 @@ class Project extends Model
         return $this->belongsTo('App\Person', 'technical_leader_id');
     }
 
-    public function getUrlsListAttribute()
+    public function getClientNameAttribute()
     {
-        return $this->urls? explode("\n", $this->urls) : [];
+        return $this->client? $this->client->name : '(empty)';
     }
 
-    public function getSourceCodeLinkAttribute()
+    public function getUrlsListAttribute()
     {
-        if(starts_with($this->source_code, 'http')) {
-            return sprintf('<a href="%s">%s</a>', $this->source_code, $this->source_code);
+        return $this->explode($this->url);
+    }
+
+    public function getSourceCodeLinksAttribute()
+    {
+        $urls = $this->explode($this->source_code);
+
+        foreach ($urls as $i => $url) {
+            if(starts_with($url, 'http')) {
+                $urls[$i] = sprintf('<a href="%s">%s</a>', $url, $url);
+            }
         }
 
-        return $this->source_code;
+        return $urls;
+    }
+
+    public function explode($value)
+    {
+        return $value? explode("\n", $value) : [];
     }
 }

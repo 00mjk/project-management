@@ -30,10 +30,10 @@
                 <tr>
                     <td>{{ $project->id }}</td>
                     <td><a href="{{ route('project.show', $project) }}">{{ $project->name }}</a></td>
-                    <td>{{ optional($project->client)->name }}</td>
-                    <td>{{ optional($project->manager)->name }}</td>
-                    <td>{{ optional($project->product_owner)->name }}</td>
-                    <td>{{ optional($project->technical_leader)->name }}</td>
+                    @include('components.td', ['value' => optional($project->client)->name])
+                    @include('components.td', ['value' => optional($project->manager)->name])
+                    @include('components.td', ['value' => optional($project->product_owner)->name])
+                    @include('components.td', ['value' => optional($project->technical_leader)->name])
                     <td>{{ $project->created_at }}</td>
                 </tr>
             @endforeach

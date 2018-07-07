@@ -27,7 +27,7 @@
                 <tr>
                     <td>{{ $person->id }}</td>
                     <td><a href="{{ route('person.show', $person) }}">{{ $person->name }}</a></td>
-                    <td><a href="mailto:{{$person->email}}">{{ $person->email }}</a></td>
+                    @include('components.td', ['value' => $person->email])
                     <td>{{ $person->created_at }}</td>
                 </tr>
             @endforeach
