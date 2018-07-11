@@ -3,8 +3,8 @@
 <div class="row">
     <div class="col-md">
         <div class="form-group">
-            <label for="name">Name</label>
-            {{ Form::text('name', null, ['id' => 'name', 'class' => 'form-control']) }}
+            <label for="name">Name *</label>
+            {{ Form::text('name', null, ['id' => 'name', 'class' => 'form-control', 'required' => true]) }}
         </div>
         <div class="form-group">
             <label for="description">Description</label>

@@ -9,8 +9,8 @@
     {{ Form::open(['route' => 'person.store']) }}
 
         <div class="form-group">
-            <label for="name">Name</label>
-            {{ Form::text('name', null, ['id' => 'name', 'class' => 'form-control']) }}
+            <label for="name">Name *</label>
+            {{ Form::text('name', null, ['id' => 'name', 'class' => 'form-control', 'required' => true]) }}
         </div>
 
         <div class="form-group">
@@ -19,8 +19,8 @@
         </div>
 
         <div class="form-group">
-            <label for="role_id">Role</label>
-            {{ Form::select('role_id', $roles, null, ['class' => 'form-control', 'placeholder' => 'Select role...']) }}
+            <label for="role_id">Role *</label>
+            {{ Form::select('role_id', $roles, null, ['class' => 'form-control', 'placeholder' => 'Select role...', 'required' => true]) }}
         </div>
 
         <p class="text-right"><button type="submit" id="create" class="btn btn-primary">Create new person</button></p>
