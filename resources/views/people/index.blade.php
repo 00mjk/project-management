@@ -19,6 +19,7 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>E-mail address</th>
+                <th>Role</th>
                 <th>Created</th>
             </tr>
         </thead>
@@ -28,6 +29,7 @@
                     <td>{{ $person->id }}</td>
                     <td><a href="{{ route('person.show', $person) }}">{{ $person->name }}</a></td>
                     @include('components.td', ['value' => $person->email])
+                    <td>{{ $person->role->name }}</td>
                     <td>{{ $person->created_at }}</td>
                 </tr>
             @endforeach
