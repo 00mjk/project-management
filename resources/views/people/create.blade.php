@@ -20,7 +20,7 @@
 
         <div class="form-group">
             <label for="role_id">Role</label>
-            {{ Form::select('role_id', $roles, null, ['class' => 'form-control']) }}
+            {{ Form::select('role_id', $roles, null, ['class' => 'form-control', 'placeholder' => 'Select role...']) }}
         </div>
 
         <p class="text-right"><button type="submit" id="create" class="btn btn-primary">Create new person</button></p>
