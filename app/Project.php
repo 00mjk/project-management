@@ -12,37 +12,13 @@ class Project extends Model
     public $fillable = [
         'name',
         'description',
-        'client_id',
-        'project_manager_id',
-        'product_owner_id',
-        'technical_leader_id',
         'urls',
         'source_code'
     ];
 
-    public function client()
+    public function people()
     {
-        return $this->belongsTo('App\Person', 'client_id');
-    }
-
-    public function manager()
-    {
-        return $this->belongsTo('App\Person', 'project_manager_id');
-    }
-
-    public function product_owner()
-    {
-        return $this->belongsTo('App\Person', 'product_owner_id');
-    }
-
-    public function technical_leader()
-    {
-        return $this->belongsTo('App\Person', 'technical_leader_id');
-    }
-
-    public function getClientNameAttribute()
-    {
-        return $this->client? $this->client->name : '(empty)';
+        return $this->belongsToMany('App\Person');
     }
 
     public function getUrlsListAttribute()

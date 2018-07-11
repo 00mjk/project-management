@@ -12,7 +12,7 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item" id="name">Name: {{ $person->name }}</li>
             <li class="list-group-item" id="email">E-mail address: {{ $person->email }}</li>
-            <li class="list-group-item" id="roles">Roles: <ul>@foreach($person->roles as $role) <li>{{ $role->name }}</li> @endforeach</ul></li>
+            <li class="list-group-item" id="role">Role: {{ $person->role->name }}</li>
         </ul>
     </div>
 

@@ -24,7 +24,7 @@ class PersonController extends Controller
 
     public function create()
     {
-        $roles = Role::all();
+        $roles = Role::all()->pluck('name', 'id');
 
         return view('people.create', compact('roles'));
     }
@@ -33,10 +33,9 @@ class PersonController extends Controller
     {
         $person = Person::create($request->only([
             'name',
-            'email'
+            'email',
+            'role_id'
         ]));
-
-        $person->roles()->attach($request->roles);
 
         return redirect()->route('person.index')
                          ->with('success', 'Person successfully created!');
@@ -49,7 +48,7 @@ class PersonController extends Controller
 
     public function edit(Person $person)
     {
-        $roles = Role::all();
+        $roles = Role::all()->pluck('name', 'id');
 
         return view('people.edit', compact('person', 'roles'));
     }
@@ -58,10 +57,9 @@ class PersonController extends Controller
     {
         $person->update($request->only([
             'name',
-            'email'
+            'email',
+            'role_id'
         ]));
-
-        $person->roles()->sync($request->roles);
 
         return redirect()->route('person.index')
                  ->with('success', 'Person successfully updated!');

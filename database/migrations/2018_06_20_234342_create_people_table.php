@@ -17,8 +17,13 @@ class CreatePeopleTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->nullable();
+            $table->integer('role_id')->index();
             $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign('role_id')
+                  ->references('id')->on('roles')
+                  ->onDelete('set null');
         });
     }
 

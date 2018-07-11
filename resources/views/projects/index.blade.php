@@ -18,10 +18,7 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Client</th>
-                <th>Project manager</th>
-                <th>Project owner</th>
-                <th>Technical leader</th>
+                <th>Team</th>
                 <th>Created</th>
             </tr>
         </thead>
@@ -30,10 +27,7 @@
                 <tr>
                     <td>{{ $project->id }}</td>
                     <td><a href="{{ route('project.show', $project) }}">{{ $project->name }}</a></td>
-                    @include('components.td', ['value' => optional($project->client)->name])
-                    @include('components.td', ['value' => optional($project->manager)->name])
-                    @include('components.td', ['value' => optional($project->product_owner)->name])
-                    @include('components.td', ['value' => optional($project->technical_leader)->name])
+                    @include('components.td-collection', ['collection' => $project->people, 'field' => 'name'])
                     <td>{{ $project->created_at }}</td>
                 </tr>
             @endforeach

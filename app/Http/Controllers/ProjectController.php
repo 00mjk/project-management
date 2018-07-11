@@ -25,27 +25,21 @@ class ProjectController extends Controller
 
     public function create()
     {
-        $roles = Role::get();
-
-        $people = $roles->reduce(function ($people, $role) {
-            return $this->reduceRoles($people, $role);
-        });
+        $people = Person::all();
 
         return view('projects.create', compact('clients', 'people'));
     }
 
     public function store(Request $request)
     {
-        Project::create($request->only([
+        $project = Project::create($request->only([
             'name',
             'description',
-            'client_id',
-            'project_manager_id',
-            'product_owner_id',
-            'technical_leader_id',
             'urls',
             'source_code'
         ]));
+
+        $project->people()->sync($request->people);
 
         return redirect()->route('project.index')
                          ->with('success', 'Project successfully created!');
@@ -58,11 +52,7 @@ class ProjectController extends Controller
 
     public function edit(Project $project)
     {
-        $roles = Role::with('people')->get();
-
-        $people = $roles->reduce(function ($people, $role) {
-            return $this->reduceRoles($people, $role);
-        });
+        $people = Person::all();
 
         return view('projects.edit', compact('project', 'people'));
     }
@@ -72,13 +62,11 @@ class ProjectController extends Controller
         $project->update($request->only([
             'name',
             'description',
-            'client_id',
-            'project_manager_id',
-            'product_owner_id',
-            'technical_leader_id',
             'urls',
             'source_code'
         ]));
+
+        $project->people()->sync($request->people);
 
         return redirect()->route('project.index')
                          ->with('success', 'Project successfully updated!');
@@ -106,12 +94,5 @@ class ProjectController extends Controller
 
         return redirect()->route('project.index')
                          ->with('success', 'Project successfully restored!');
-    }
-
-    private function reduceRoles($roles, $role)
-    {
-        $roles[$role->slug] = $role->people->pluck('name', 'id');
-
-        return $roles;
     }
 }

@@ -21,16 +21,8 @@
         </div>
 
         <div class="form-group">
-            <label>Roles</label>
-
-            @foreach($roles as $role)
-
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="{{ $role->id }}" id="role-{{ $role->id }}" name="roles[]" @if($person->roles->contains('id', $role->id)) checked="checked" @endif>
-                    <label class="form-check-label" for="role-{{ $role->id }}">{{ $role->name }}</label>
-                </div>
-
-            @endforeach
+            <label for="role_id">Role</label>
+            {{ Form::select('role_id', $roles, null, ['class' => 'form-control']) }}
         </div>
 
         <p class="text-right"><button type="submit" id="update" class="btn btn-primary">Update person</button></p>

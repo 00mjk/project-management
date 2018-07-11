@@ -11,14 +11,15 @@ class Person extends Model
 
     public $fillable = [
         'name',
-        'email'
+        'email',
+        'role_id'
     ];
 
     protected $dates = ['deleted_at'];
 
-    public function roles()
+    public function role()
     {
-        return $this->belongsToMany('App\Role');
+        return $this->belongsTo('App\Role');
     }
 
     public function scopeHasRole($query, $role)

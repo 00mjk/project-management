@@ -14,10 +14,18 @@
 
     <div class="card">
         <ul class="list-group list-group-flush">
-            @include('components.li', ['label' => 'Client', 'value' => optional($project->client)->name])
-            @include('components.li', ['label' => 'Project manager', 'value' => optional($project->manager)->name])
-            @include('components.li', ['label' => 'Product owner', 'value' => optional($project->product_owner)->name])
-            @include('components.li', ['label' => 'Technical leader', 'value' => optional($project->technical_leader)->name])
+            <li class="list-group-item" id="people">
+                Team:
+                @if(!$project->people->isEmpty())
+                    <ul>
+                        @foreach($project->people as $person)
+                            <li>{{ $person->name }} ({{ $person->role->name }})</li>
+                        @endforeach
+                    </ul>
+                @else
+                    <span class="text-muted">(empty)</span>
+                @endif
+            </li>
             <li class="list-group-item" id="urls">
                 URLs:
                 @if($project->urls)
