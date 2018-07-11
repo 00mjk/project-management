@@ -17,6 +17,7 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Created</th>
+                <th>Deleted</th>
             </tr>
         </thead>
         <tbody>
@@ -25,6 +26,7 @@
                     <td>{{ $project->id }}</td>
                     <td><a href="{{ route('project.show', $project) }}">{{ $project->name }}</a></td>
                     <td>{{ $project->created_at }}</td>
+                    <td>{{ $project->deleted_at }}</td>
                 </tr>
             @endforeach
         </tbody>
