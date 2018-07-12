@@ -4,7 +4,6 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Role::class, function (Faker $faker) {
     return [
-        'name' => ucfirst($faker->word),
-        'slug' => str_slug($faker->word)
+        'name' => ucfirst($faker->word)
     ];
 });

@@ -11,24 +11,12 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Role::class)->create([
-            'name' => 'Client',
-            'slug' => 'client'
-        ]);
+        factory(App\Role::class)->create(['name' => 'Client']);
 
-        factory(App\Role::class)->create([
-            'name' => 'Project manager',
-            'slug' => 'project-manager'
-        ]);
+        factory(App\Role::class)->create(['name' => 'Project manager']);
 
-        factory(App\Role::class)->create([
-            'name' => 'Product owner',
-            'slug' => 'product-owner'
-        ]);
+        factory(App\Role::class)->create(['name' => 'Product owner']);
 
-        factory(App\Role::class)->create([
-            'name' => 'Technical leader',
-            'slug' => 'technical-leader'
-        ]);
+        factory(App\Role::class)->create(['name' => 'Technical leader']);
     }
 }
