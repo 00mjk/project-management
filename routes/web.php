@@ -34,3 +34,11 @@ Route::put('/people/{editable_person}', 'PersonController@update')->name('person
 Route::delete('/people/{editable_person}', 'PersonController@destroy')->name('person.destroy');
 Route::delete('/people/{editable_person}/force_delete', 'PersonController@forceDelete')->name('person.force_delete');
 Route::put('/people/{editable_person}/restore', 'PersonController@restore')->name('person.restore');
+
+Route::get('/roles', 'RoleController@index')->name('role.index');
+Route::get('/roles/create', 'RoleController@create')->name('role.create');
+Route::post('/roles/store', 'RoleController@store')->name('role.store');
+Route::get('/roles/{role}', 'RoleController@show')->name('role.show');
+Route::get('/roles/{role}/edit', 'RoleController@edit')->name('role.edit');
+Route::delete('/roles/{role}', 'RoleController@destroy')->name('role.destroy');
+Route::put('/roles/{role}', 'RoleController@update')->name('role.update');

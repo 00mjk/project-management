@@ -21,6 +21,9 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ route('person.index') }}"><span class="oi oi-people"></span> People</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('role.index') }}"><span class="oi oi-list"></span> Roles</a>
+          </li>
         </ul>
     </nav>
 
