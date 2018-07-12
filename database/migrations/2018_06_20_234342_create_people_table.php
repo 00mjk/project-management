@@ -17,7 +17,7 @@ class CreatePeopleTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->nullable();
-            $table->integer('role_id')->index();
+            $table->integer('role_id')->nullable()->index();
             $table->softDeletes();
             $table->timestamps();
 
