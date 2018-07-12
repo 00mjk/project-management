@@ -31,7 +31,7 @@ class PersonController extends Controller
 
     public function store(Request $request)
     {
-        $person = Person::create($request->only([
+        Person::create($request->only([
             'name',
             'email',
             'role_id'
