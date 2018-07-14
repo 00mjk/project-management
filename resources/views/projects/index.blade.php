@@ -11,7 +11,7 @@
 
     <h1 class="mb-3">Projects</h1>
 
-    <p><a href="{{ route('project.trashed') }}" role="button" class="btn btn-info"><span class="oi oi-trash"></span> View deleted</a> <a href="{{ route('project.create') }}" role="button" class="btn btn-primary"><span class="oi oi-plus"></span> Create new project</a></p>
+    <p><a href="{{ route('project.create') }}" role="button" class="btn btn-primary"><span class="oi oi-plus"></span> Create new project</a> <a href="{{ route('project.trashed') }}" role="button" class="btn btn-info"><span class="oi oi-trash"></span> View deleted</a></p>
 
     <table id="projects" class="table">
         <thead>
