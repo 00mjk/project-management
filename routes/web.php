@@ -13,32 +13,38 @@
 
 Route::redirect('/', '/projects');
 
-Route::get('/projects', 'ProjectController@index')->name('project.index');
-Route::get('/projects/trashed', 'ProjectController@trashed')->name('project.trashed');
-Route::get('/projects/create', 'ProjectController@create')->name('project.create');
-Route::post('/projects/store', 'ProjectController@store')->name('project.store');
-Route::get('/projects/{editable_project}', 'ProjectController@show')->name('project.show');
-Route::get('/projects/{editable_project}/edit', 'ProjectController@edit')->name('project.edit');
-Route::put('/projects/{editable_project}', 'ProjectController@update')->name('project.update');
-Route::delete('/projects/{editable_project}', 'ProjectController@destroy')->name('project.destroy');
-Route::delete('/projects/{editable_project}/force_delete', 'ProjectController@forceDelete')->name('project.force_delete');
-Route::put('/projects/{editable_project}/restore', 'ProjectController@restore')->name('project.restore');
+Route::prefix('/projects')->name('project.')->group(function () {
+    Route::get('/', 'ProjectController@index')->name('index');
+    Route::get('/trashed', 'ProjectController@trashed')->name('trashed');
+    Route::get('/create', 'ProjectController@create')->name('create');
+    Route::post('/store', 'ProjectController@store')->name('store');
+    Route::get('/{editable_project}', 'ProjectController@show')->name('show');
+    Route::get('/{editable_project}/edit', 'ProjectController@edit')->name('edit');
+    Route::put('/{editable_project}', 'ProjectController@update')->name('update');
+    Route::put('/{editable_project}/restore', 'ProjectController@restore')->name('restore');
+    Route::delete('/{editable_project}', 'ProjectController@destroy')->name('destroy');
+    Route::delete('/{editable_project}/force_delete', 'ProjectController@forceDelete')->name('force_delete');
+});
 
-Route::get('/people', 'PersonController@index')->name('person.index');
-Route::get('/people/trashed', 'PersonController@trashed')->name('person.trashed');
-Route::get('/people/create', 'PersonController@create')->name('person.create');
-Route::post('/people/store', 'PersonController@store')->name('person.store');
-Route::get('/people/{editable_person}', 'PersonController@show')->name('person.show');
-Route::get('/people/{editable_person}/edit', 'PersonController@edit')->name('person.edit');
-Route::put('/people/{editable_person}', 'PersonController@update')->name('person.update');
-Route::delete('/people/{editable_person}', 'PersonController@destroy')->name('person.destroy');
-Route::delete('/people/{editable_person}/force_delete', 'PersonController@forceDelete')->name('person.force_delete');
-Route::put('/people/{editable_person}/restore', 'PersonController@restore')->name('person.restore');
+Route::prefix('/people')->name('person.')->group(function () {
+    Route::get('/', 'PersonController@index')->name('index');
+    Route::get('/trashed', 'PersonController@trashed')->name('trashed');
+    Route::get('/create', 'PersonController@create')->name('create');
+    Route::post('/store', 'PersonController@store')->name('store');
+    Route::get('/{editable_person}', 'PersonController@show')->name('show');
+    Route::get('/{editable_person}/edit', 'PersonController@edit')->name('edit');
+    Route::put('/{editable_person}', 'PersonController@update')->name('update');
+    Route::put('/{editable_person}/restore', 'PersonController@restore')->name('restore');
+    Route::delete('/{editable_person}', 'PersonController@destroy')->name('destroy');
+    Route::delete('/{editable_person}/force_delete', 'PersonController@forceDelete')->name('force_delete');
+});
 
-Route::get('/roles', 'RoleController@index')->name('role.index');
-Route::get('/roles/create', 'RoleController@create')->name('role.create');
-Route::post('/roles/store', 'RoleController@store')->name('role.store');
-Route::get('/roles/{role}', 'RoleController@show')->name('role.show');
-Route::get('/roles/{role}/edit', 'RoleController@edit')->name('role.edit');
-Route::delete('/roles/{role}', 'RoleController@destroy')->name('role.destroy');
-Route::put('/roles/{role}', 'RoleController@update')->name('role.update');
+Route::prefix('/roles')->name('role.')->group(function () {
+    Route::get('/', 'RoleController@index')->name('index');
+    Route::get('/create', 'RoleController@create')->name('create');
+    Route::post('/store', 'RoleController@store')->name('store');
+    Route::get('/{role}', 'RoleController@show')->name('show');
+    Route::get('/{role}/edit', 'RoleController@edit')->name('edit');
+    Route::delete('/{role}', 'RoleController@destroy')->name('destroy');
+    Route::put('/{role}', 'RoleController@update')->name('update');
+});
